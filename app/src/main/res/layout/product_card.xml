@@ -7,7 +7,9 @@
    <androidx.cardview.widget.CardView
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       app:cardPreventCornerOverlap="true">
+       app:cardPreventCornerOverlap="true"
+       android:outlineAmbientShadowColor="@color/colorPrimaryDark"
+       android:layout_marginBottom="10dp">
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -16,14 +18,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ime na proizvod"
+        android:textSize="18sp"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="10dp"
+        android:fontFamily="monospace"/>
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/productName"
+        android:text="$price"
+        android:layout_marginLeft="20dp"
+        android:textStyle="italic"
+        android:fontFamily="monospace"/>
     <ImageView
         android:id="@+id/productImage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="120dp"
         android:src="@drawable/ic_launcher_background"
-        android:layout_below="@+id/productName"
+        android:layout_below="@+id/price"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp"
         />
@@ -42,10 +55,6 @@
         android:text="to cart"/>
 
 </RelativeLayout>
-
-
-
-
 
    </androidx.cardview.widget.CardView>
 

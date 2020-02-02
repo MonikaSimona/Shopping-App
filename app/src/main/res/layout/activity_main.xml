@@ -8,6 +8,7 @@
     android:orientation="horizontal">
 
 
+
     <fragment
         android:id="@+id/productsFrag"
         android:name="com.example.shopping_app.ProductsFrag"

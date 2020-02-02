@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CheckOut"
+
+    android:layout_marginRight="20dp"
+    android:layout_marginLeft="20dp"
+    >
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Your Firts Name"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:fontFamily="monospace"
+        />
+    <EditText
+        android:id="@+id/nameEnter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
+        android:layout_marginTop="8dp"
+        android:hint="Enter first name"
+
+        />
+    <TextView
+        android:id="@+id/surname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nameEnter"
+        android:layout_marginTop="20dp"
+        android:text="Your Last Name"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:fontFamily="monospace"
+        />
+    <EditText
+        android:id="@+id/surnameEnter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/surname"
+        android:layout_marginTop="8dp"
+        android:hint="Enter last name"
+
+        />
+    <TextView
+        android:id="@+id/cardNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/surnameEnter"
+        android:layout_marginTop="20dp"
+        android:text="Your Credit Card Number"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:fontFamily="monospace"
+        />
+    <EditText
+        android:id="@+id/cardNumberEnter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cardNumber"
+        android:layout_marginTop="8dp"
+        android:hint="Enter last name"
+
+        />
+    <Button
+        android:id="@+id/buy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cardNumberEnter"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:text="buy"
+        android:fontFamily="monospace"/>
+
+
+</RelativeLayout>
