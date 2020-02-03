@@ -20,7 +20,9 @@
         android:layout_marginTop="10dp"
         android:text="CheckOut"
         android:fontFamily="monospace"
-
+        android:background="@color/colorPrimary"
+        android:textColor="@color/buttonText"
+        android:onClick="goToCheckOut"
         />
 
 

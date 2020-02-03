@@ -41,7 +41,9 @@
         android:layout_marginRight="30dp"
         android:layout_marginTop="10dp"
         android:text="delete"
-        android:fontFamily="monospace"/>
+        android:fontFamily="monospace"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/buttonText"/>
 
 </RelativeLayout>
 

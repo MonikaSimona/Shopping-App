@@ -45,14 +45,18 @@
         android:layout_height="wrap_content"
         android:text="Details"
         android:layout_below="@+id/productImage"
-        android:layout_marginLeft="70dp"/>
+        android:layout_marginLeft="70dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/buttonText"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/productImage"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="70dp"
-        android:text="to cart"/>
+        android:text="to cart"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/buttonText"/>
 
 </RelativeLayout>
 
