@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class CheckOut extends AppCompatActivity {
@@ -52,7 +53,14 @@ public class CheckOut extends AppCompatActivity {
         surname = (EditText) findViewById(R.id.surnameEnter);
         cardNumber = (EditText) findViewById(R.id.cardNumberEnter);
 
-        if(!(name.getText().toString().equals(" ")) || !(surname.getText().toString().equals(" ")) || !(cardNumber.getText().toString().equals(" "))){
+        String nameS = name.getText().toString();
+        String surnameS = surname.getText().toString();
+        String cardNumberS = cardNumber.getText().toString();
+
+//        TextView text = findViewById(R.id.text);
+//        text.setText(nameS);
+
+        if(nameS.equals("") || surnameS.equals("") || cardNumberS.equals("") ){
 
             Toast.makeText(this,"All fields are required",Toast.LENGTH_SHORT).show();
 

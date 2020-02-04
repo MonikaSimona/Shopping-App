@@ -3,6 +3,6 @@
     <color name="colorPrimary">#1A6114</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#97D5EE</color>
-    <color name="clickedIcon">#959695</color>
+    <color name="clickedIcon">#C7CBC7</color>
     <color name="buttonText">#fff</color>
 </resources>

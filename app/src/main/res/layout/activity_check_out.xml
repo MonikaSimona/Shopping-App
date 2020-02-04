@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="Your Firts Name"
+        android:text="Your First Name"
         android:textStyle="bold"
         android:textSize="20sp"
         android:fontFamily="monospace"
@@ -28,6 +28,12 @@
 
 
         />
+<!--    <TextView-->
+<!--        android:id="@+id/text"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="25dp"-->
+<!--        android:layout_below="@+id/buy"/>-->
     <TextView
         android:id="@+id/surname"
         android:layout_width="match_parent"

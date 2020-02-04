@@ -5,10 +5,11 @@
     android:layout_height="match_parent"
     tools:context=".ProductsFrag"
     android:orientation="vertical"
-    android:background="@color/colorAccent">
+    >
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/productList"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
