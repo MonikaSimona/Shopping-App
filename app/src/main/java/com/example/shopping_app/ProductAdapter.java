@@ -50,7 +50,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                 @Override
                 public void onClick(View v) {
 
-                    activity.onProductClicked(products.indexOf( itemView.getTag()));
+                    activity.onProductClicked(products.indexOf(itemView.getTag()));
 
                 }
             });
@@ -69,7 +69,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         holder.itemView.setTag(products.get(position));
 
         holder.productName.setText(products.get(position).getProductName());
-//        holder.productImage.setImageResource(products.get(position).getImage());
+        holder.productImage.setImageResource(products.get(position).getImage());
         holder.price.setText(products.get(position).getPrice());
 
     }

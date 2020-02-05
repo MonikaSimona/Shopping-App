@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 
 import android.app.ActionBar;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -33,10 +34,18 @@ public class MainActivity extends AppCompatActivity implements ProductAdapter.Pr
         productNameDet = findViewById(R.id.productNameDet);
         priceDet = findViewById(R.id.priceDet);
         description = findViewById(R.id.desc);
+        productImageDet = findViewById(R.id.productImgDet);
 
         toCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent sendIntent = new Intent(MainActivity.this,Cart.class);
+                sendIntent.putExtra("name",productNameDet.toString());
+                sendIntent.putExtra("price",priceDet.toString());
+
+
+
 
             }
         });
@@ -87,7 +96,8 @@ public class MainActivity extends AppCompatActivity implements ProductAdapter.Pr
         productNameDet.setText(ApplicationClass.products.get(index).getProductName());
         priceDet.setText(ApplicationClass.products.get(index).getPrice());
         description.setText(ApplicationClass.products.get(index).getDescription());
-
+        productImageDet.setImageResource(ApplicationClass.products.get(index).getImage());
+//        productImageDet.setBackgroundResource(ApplicationClass.products.get(index).getImage());
         if(findViewById(R.id.layout_portrait) != null){
             FragmentManager fragmentManager = this.getSupportFragmentManager();
             fragmentManager.beginTransaction()

@@ -5,4 +5,85 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="product_description">Description:
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et firum sectasemprum.</string>
+    <string-array name="cards">
+        <item>MasterCard</item>
+        <item>Visa</item>
+        <item>American Express</item>
+    </string-array>
+
+    <string-array name="product_titles">
+        <item>Art Brushes 1</item>
+        <item>Art Brushes 2</item>
+        <item>Watercolor Paper 1</item>
+        <item>Watercolor Paper 2</item>
+        <item>Oil Paints 1</item>
+        <item>Oil Paints 2</item>
+        <item>Markers 1</item>
+        <item>Markers 2</item>
+
+    </string-array>
+
+    <string-array name="product_prices">
+        <item>$20</item>
+        <item>$30</item>
+        <item>$35</item>
+        <item>$34</item>
+        <item>$21</item>
+        <item>$80</item>
+        <item>$50</item>
+        <item>$57</item>
+
+    </string-array>
+
+    <string-array name="product_details">
+        <item>Detail paint brushes for artists and model makers, watercolor, acrylic, oil paints, etc.
+Soft and polished wooden handles give you more control of the brush while painting.
+It is secure to the handle with the metal part well attached to the wood and the brush hair, so there is no wiggling.
+Easy to clean and brushes hold their shape after cleaning.
+Triangular grip handle to give holding precision.</item>
+        <item>Detail paint brushes for artists and model makers, watercolor, acrylic, oil paints, etc.
+Soft and polished wooden handles give you more control of the brush while painting.
+It is secure to the handle with the metal part well attached to the wood and the brush hair, so there is no wiggling.
+Easy to clean and brushes hold their shape after cleaning.
+Triangular grip handle to give holding precision.</item>
+        <item>Made from 100 percent pure cotton, 140lb/300gsm heavyweight watercolor papers, acid-free and chlorine-free, pH-neutral and archival, durable and strong enough for whether wet, dry or mixed media painting, and less likely to curl or warp</item>
+        <item>Made from 100 perecent pure cotton, 140lb/300gsm heavyweight watercolor papers, acid-free and chlorine-free, pH-neutral and archival, durable and strong enough for whether wet, dry or mixed media painting, and less likely to curl or warp</item>
+        <item>    Set of 12 assorted shades in 9 ml tube
+    Confirms to safety standard ASTM- AP certification
+    Best result can be seen on canvas and Oil Sketching Paper</item>
+        <item>    Set of 12 assorted shades in 9 ml tube
+    Confirms to safety standard ASTM- AP certification
+    Best result can be seen on canvas and Oil Sketching Paper</item>
+        <item>New 80 Colors 1PCS,Dual Tip Brush Marker Pens, 0.4 Fineliners and Brush Highlighter Pen for Adults children Painting water color pen for children Coloring Book Bullet Journal (Random Color)
+
+Multi Purpose: Perfect for lettering, calligraphy, school planner, den journal, journal, den, the second part of the world.
+
+Type:Brush head and Fiber head
+
+Type:Watercolor Brush Pen
+
+Color:80 colors</item>
+        <item>New 80 Colors 1PCS,Dual Tip Brush Marker Pens, 0.4 Fineliners and Brush Highlighter Pen for Adults children Painting water color pen for children Coloring Book Bullet Journal (Random Color)
+
+Multi Purpose: Perfect for lettering, calligraphy, school planner, den journal, journal, den, the second part of the world.
+
+Type:Brush head and Fiber head
+
+Type:Watercolor Brush Pen
+
+Color:80 colors</item>
+
+    </string-array>
+
+    <array name="sports_images">
+        <item>@drawable/brush1</item>
+        <item>@drawable/brush2</item>
+        <item>@drawable/paper1</item>
+        <item>@drawable/paper2</item>
+        <item>@drawable/paint1</item>
+        <item>@drawable/paint2</item>
+        <item>@drawable/markers1</item>
+        <item>@drawable/markers2</item>
+
+    </array>
 </resources>

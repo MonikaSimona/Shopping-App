@@ -2,13 +2,13 @@ package com.example.shopping_app;
 
 public class Product {
     String productName;
-//    int image;
+    int image;
     String price;
     String description;
 
-    public Product(String productName, /*int image,*/ String price,String description) {
+    public Product(String productName, int image, String price,String description) {
         this.productName = productName;
-//        this.image = image;
+        this.image = image;
         this.price = price;
         this.description = description;
     }
@@ -21,13 +21,13 @@ public class Product {
         this.productName = productName;
     }
 
-//    public int getImage() {
-//        return image;
-//    }
-//
-//    public void setImage(int image) {
-//        this.image = image;
-//    }
+    public int getImage() {
+        return image;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
+    }
 
     public String getPrice() {
         return price;

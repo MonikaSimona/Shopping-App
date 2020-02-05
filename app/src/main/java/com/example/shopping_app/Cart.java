@@ -10,12 +10,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.util.ArrayList;
+
 public class Cart extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
+
+        String name  = getIntent().getStringExtra("name");
+        String price = getIntent().getStringExtra("price");
+        ArrayList<CartProduct> cartProducts = new ArrayList<CartProduct>();
+        cartProducts.add(new CartProduct(name,price));
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -54,11 +54,33 @@
 
 
         />
+    <ImageView
+        android:id="@+id/cardImage"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/surnameEnter"
+        android:layout_toLeftOf="@+id/spinner"
+        android:src="@drawable/credit_card"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="8dp"
+        />
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/surnameEnter"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="20dp"
+        >
+
+
+    </Spinner>
     <TextView
         android:id="@+id/cardNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/surnameEnter"
+        android:layout_below="@+id/spinner"
         android:layout_marginTop="20dp"
         android:text="Your Credit Card Number"
         android:textStyle="bold"

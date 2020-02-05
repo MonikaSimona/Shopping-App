@@ -15,8 +15,9 @@
         android:layout_marginTop="10dp"
         android:textStyle="bold"
         android:fontFamily="monospace"/>
+
     <ImageView
-        android:id="@+id/productImageDet"
+        android:id="@+id/productImgDet"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_below="@+id/productNameDet"
@@ -32,7 +33,7 @@
         android:text="Price:  $12"
         android:textSize="20sp"
         android:fontFamily="monospace"
-        android:layout_below="@+id/productImageDet"
+        android:layout_below="@+id/productImgDet"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         />
@@ -61,12 +62,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
+
         android:text="to Cart"
         android:fontFamily="monospace"
         android:background="@color/colorPrimary"
         android:textColor="@color/buttonText"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@id/scroll"
+        android:layout_marginTop="20dp"
 
 
         />
