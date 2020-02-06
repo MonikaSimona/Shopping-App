@@ -1,6 +1,7 @@
 package com.example.shopping_app;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     private ArrayList<Product> products;
 
     ProductClicked activity;
+    private Context mContext;
 
     public interface ProductClicked{
         void onProductClicked(int index);
@@ -27,6 +29,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
         products = list;
         activity = (ProductClicked) context;
+        mContext = context;
+
     }
 
 
@@ -45,6 +49,18 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             productImage = itemView.findViewById(R.id.productImage);
             detailsBtn = itemView.findViewById(R.id.detailsBtn);
             toCartBtn  = itemView.findViewById(R.id.toCartBtn);
+            toCartBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+
+                    Intent sendIntent = Product.starter(mContext,products.get(getAdapterPosition()).getProductName(),products.get(getAdapterPosition()).getPrice());
+
+                    mContext.startActivity(sendIntent);
+
+
+                }
+            });
 
             detailsBtn.setOnClickListener(new View.OnClickListener() {
                 @Override

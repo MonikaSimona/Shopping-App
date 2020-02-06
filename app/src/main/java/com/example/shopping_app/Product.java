@@ -1,5 +1,8 @@
 package com.example.shopping_app;
 
+import android.content.Context;
+import android.content.Intent;
+
 public class Product {
     String productName;
     int image;
@@ -44,4 +47,12 @@ public class Product {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    static Intent starter(Context context, String productName, String price) {
+        Intent cartIntent = new Intent(context, Cart.class);
+        cartIntent.putExtra("name", productName);
+        cartIntent.putExtra("price", price);
+        return cartIntent;
+    }
+
 }

@@ -40,10 +40,12 @@ public class MainActivity extends AppCompatActivity implements ProductAdapter.Pr
             @Override
             public void onClick(View v) {
 
-                Intent sendIntent = new Intent(MainActivity.this,Cart.class);
-                sendIntent.putExtra("name",productNameDet.toString());
-                sendIntent.putExtra("price",priceDet.toString());
-
+//
+//                Intent sendIntent = new Intent(MainActivity.this,Cart.class);
+//                sendIntent.putExtra("name",);
+//                sendIntent.putExtra("price",priceDet.toString());
+//                startActivity(sendIntent);
+//
 
 
 
@@ -83,6 +85,10 @@ public class MainActivity extends AppCompatActivity implements ProductAdapter.Pr
             startActivity(intent);
         }
 
+        else if(item.getItemId()== R.id.guide){
+            Intent intent = new Intent(this,HelpGuide.class);
+            startActivity(intent);
+        }
         else{
             return super.onOptionsItemSelected(item);
         }

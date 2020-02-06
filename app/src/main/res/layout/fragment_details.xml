@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetailsFrag"
+    android:scrollbars="horizontal"
+    android:isScrollContainer="true"
     >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <TextView
         android:id="@+id/productNameDet"
         android:layout_width="match_parent"
@@ -14,7 +19,8 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:textStyle="bold"
-        android:fontFamily="monospace"/>
+        android:fontFamily="monospace"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <ImageView
         android:id="@+id/productImgDet"
@@ -69,9 +75,11 @@
         android:textColor="@color/buttonText"
         android:layout_below="@id/scroll"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="8dp"
 
 
         />
+    </RelativeLayout>
 
 
-</RelativeLayout>
+</ScrollView>

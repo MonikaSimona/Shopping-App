@@ -2,8 +2,13 @@ package com.example.shopping_app;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -22,6 +27,10 @@ public class CheckOut extends AppCompatActivity  implements AdapterView.OnItemSe
     EditText surname;
     EditText cardNumber;
     ImageView cardImage;
+    TextView buyText;
+    public String number;
+    private final String CHANNEL_ID = "personal_notifications";
+    private final int NOTIFICATION_ID = 1;
 
 
     @Override
@@ -35,6 +44,14 @@ public class CheckOut extends AppCompatActivity  implements AdapterView.OnItemSe
         spinner.setAdapter(adapter);
 
         spinner.setOnItemSelectedListener(this);
+
+        buyText = findViewById(R.id.buytext);
+        number = getIntent().getStringExtra("number");
+        if(number.equals("1")){
+            buyText.setText("Buy one item");
+        }else{
+            buyText.setText("Buy "+number+" items");
+        }
     }
 
     @Override
@@ -65,12 +82,13 @@ public class CheckOut extends AppCompatActivity  implements AdapterView.OnItemSe
         surname = (EditText) findViewById(R.id.surnameEnter);
         cardNumber = (EditText) findViewById(R.id.cardNumberEnter);
 
+
         String nameS = name.getText().toString();
         String surnameS = surname.getText().toString();
         String cardNumberS = cardNumber.getText().toString();
 
-//        TextView text = findViewById(R.id.text);
-//        text.setText(nameS);
+
+
 
         if(nameS.equals("") || surnameS.equals("") || cardNumberS.equals("") ){
 
@@ -83,22 +101,49 @@ public class CheckOut extends AppCompatActivity  implements AdapterView.OnItemSe
 
             Toast.makeText(this,"Your order has been proceeded!",Toast.LENGTH_SHORT).show();
 
+            createNotificationChannel();
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(this,CHANNEL_ID);
+            builder.setSmallIcon(R.drawable.ic_sms_black_24dp);
+            builder.setContentTitle("ShopUp");
+            builder.setContentText("Your order was successful!");
+            builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+            NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
+            notificationManagerCompat.notify(NOTIFICATION_ID,builder.build());
+
+
         }
 
 
+    }
+    private void createNotificationChannel(){
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+
+            CharSequence name = "Personal Notifications";
+            String description = "Include all the notifications";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+
+            NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID,name,importance);
+
+            notificationChannel.setDescription(description);
+
+            NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         cardImage = findViewById(R.id.cardImage);
         String text = parent.getItemAtPosition(position).toString();
-        if( text == "MasterCard"){
+        if( text != "MasterCard"){
             Toast.makeText(this,text,Toast.LENGTH_SHORT).show();
-            cardImage.setImageResource(R.drawable.mastercard_logo);
+//            cardImage.setImageResource(R.drawable.visa_logo);
 
         }else if(text != "Visa"){
             Toast.makeText(this,text,Toast.LENGTH_SHORT).show();
-            cardImage.setImageResource(R.drawable.visa_logo);
+//            cardImage.setImageResource(R.drawable.mclogo);
 
         }else{
             Toast.makeText(this,text,Toast.LENGTH_SHORT).show();
@@ -109,6 +154,7 @@ public class CheckOut extends AppCompatActivity  implements AdapterView.OnItemSe
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
         cardImage.setImageResource(R.drawable.credit_card);
+
 
     }
 }
