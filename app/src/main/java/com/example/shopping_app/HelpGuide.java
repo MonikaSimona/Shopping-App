@@ -20,7 +20,7 @@ public class HelpGuide extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
-        menu.getItem(2).setIcon(R.drawable.help_grey).setEnabled(false);
+        menu.getItem(1).setIcon(R.drawable.help_grey).setEnabled(false);
         return true;
 
     }
@@ -30,12 +30,7 @@ public class HelpGuide extends AppCompatActivity {
         if (item.getItemId() == R.id.home){
             Intent intentHome = new Intent(this,MainActivity.class);
             startActivity(intentHome);
-        }
-        else if(item.getItemId()== R.id.cart){
-            Intent intent = new Intent(this,Cart.class);
-            startActivity(intent);
-        }
-        else{
+        }else{
             return super.onOptionsItemSelected(item);
         }
         return true;

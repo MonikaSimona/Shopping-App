@@ -16,23 +16,24 @@ import java.util.ArrayList;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
 
-    private ArrayList<Product> products;
 
+    private ArrayList<Product> products;
     ProductClicked activity;
     private Context mContext;
+
+
+
+
 
     public interface ProductClicked{
         void onProductClicked(int index);
     }
 
     public ProductAdapter (Context context, ArrayList<Product> list){
-
         products = list;
         activity = (ProductClicked) context;
         mContext = context;
-
     }
-
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView productName;
@@ -40,6 +41,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         ImageView productImage;
         Button detailsBtn;
         Button toCartBtn;
+
+
 
         public ViewHolder(@NonNull final View itemView) {
             super(itemView);
@@ -49,15 +52,17 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             productImage = itemView.findViewById(R.id.productImage);
             detailsBtn = itemView.findViewById(R.id.detailsBtn);
             toCartBtn  = itemView.findViewById(R.id.toCartBtn);
+
+
             toCartBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
+                    String name = products.get(getAdapterPosition()).getProductName();
+                    String price  = products.get(getAdapterPosition()).getPrice();
 
-                    Intent sendIntent = Product.starter(mContext,products.get(getAdapterPosition()).getProductName(),products.get(getAdapterPosition()).getPrice());
-
+                    Intent sendIntent = Product.starter(mContext,name,price);
                     mContext.startActivity(sendIntent);
-
 
                 }
             });
@@ -66,8 +71,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                 @Override
                 public void onClick(View v) {
 
-                    activity.onProductClicked(products.indexOf(itemView.getTag()));
-
+              activity.onProductClicked(products.indexOf(itemView.getTag()));
                 }
             });
         }
@@ -87,11 +91,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         holder.productName.setText(products.get(position).getProductName());
         holder.productImage.setImageResource(products.get(position).getImage());
         holder.price.setText(products.get(position).getPrice());
-
     }
 
     @Override
     public int getItemCount() {
         return products.size();
     }
+
+
 }

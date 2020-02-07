@@ -49,7 +49,7 @@ public class Product {
     }
 
     static Intent starter(Context context, String productName, String price) {
-        Intent cartIntent = new Intent(context, Cart.class);
+        Intent cartIntent = new Intent(context, CheckOut.class);
         cartIntent.putExtra("name", productName);
         cartIntent.putExtra("price", price);
         return cartIntent;

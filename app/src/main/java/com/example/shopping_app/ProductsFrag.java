@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 
 /**
@@ -62,6 +63,8 @@ public class ProductsFrag extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         myAdapter = new ProductAdapter(this.getActivity(),ApplicationClass.products);
         recyclerView.setAdapter(myAdapter);
+
+
 
     }
 }

@@ -27,7 +27,8 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_below="@+id/productNameDet"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/markers1"
+
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -64,18 +65,21 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/toCart"
+        android:id="@+id/more"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
 
-        android:text="to Cart"
+        android:text="more like this"
         android:fontFamily="monospace"
         android:background="@color/colorPrimary"
         android:textColor="@color/buttonText"
         android:layout_below="@id/scroll"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="8dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+
 
 
         />

@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,40 +18,40 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity implements ProductAdapter.ProductClicked{
 
-    Button toCart;
+    Button more;
     TextView productNameDet;
     TextView priceDet;
     TextView description;
     ImageView productImageDet;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toCart = (Button) findViewById(R.id.toCart);
+
         productNameDet = findViewById(R.id.productNameDet);
         priceDet = findViewById(R.id.priceDet);
         description = findViewById(R.id.desc);
         productImageDet = findViewById(R.id.productImgDet);
+        more = findViewById(R.id.more);
 
-        toCart.setOnClickListener(new View.OnClickListener() {
+        more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-//
-//                Intent sendIntent = new Intent(MainActivity.this,Cart.class);
-//                sendIntent.putExtra("name",);
-//                sendIntent.putExtra("price",priceDet.toString());
-//                startActivity(sendIntent);
-//
-
-
-
+                Uri webpage = Uri.parse("https://www.jerrysartarama.com/?msclkid=8971fa65b56119680db5a45837ab4414&utm_source=bing&utm_medium=cpc&utm_campaign=Art%20Supplies&utm_term=sale%20art%20supply&utm_content=Sale%20Art%20Supplies");
+                Intent webintent = new Intent(Intent.ACTION_VIEW,webpage);
+                startActivity(webintent);
             }
         });
+
+
 
         if(findViewById(R.id.layout_portrait) != null){
 
@@ -80,16 +81,10 @@ public class MainActivity extends AppCompatActivity implements ProductAdapter.Pr
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.cart){
-            Intent  intent = new Intent(this, Cart.class);
+        if(item.getItemId() == R.id.guide) {
+            Intent intent = new Intent(this, HelpGuide.class);
             startActivity(intent);
-        }
-
-        else if(item.getItemId()== R.id.guide){
-            Intent intent = new Intent(this,HelpGuide.class);
-            startActivity(intent);
-        }
-        else{
+        }else{
             return super.onOptionsItemSelected(item);
         }
         return true;
@@ -103,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements ProductAdapter.Pr
         priceDet.setText(ApplicationClass.products.get(index).getPrice());
         description.setText(ApplicationClass.products.get(index).getDescription());
         productImageDet.setImageResource(ApplicationClass.products.get(index).getImage());
-//        productImageDet.setBackgroundResource(ApplicationClass.products.get(index).getImage());
+
         if(findViewById(R.id.layout_portrait) != null){
             FragmentManager fragmentManager = this.getSupportFragmentManager();
             fragmentManager.beginTransaction()

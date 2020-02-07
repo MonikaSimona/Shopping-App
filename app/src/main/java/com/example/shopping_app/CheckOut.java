@@ -1,9 +1,11 @@
 package com.example.shopping_app;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.fragment.app.FragmentActivity;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -19,16 +21,47 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class CheckOut extends AppCompatActivity  implements AdapterView.OnItemSelectedListener {
+
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.net.PlacesClient;
+import com.google.android.libraries.places.widget.Autocomplete;
+import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
+
+import java.util.Arrays;
+import java.util.List;
+
+
+public class CheckOut extends FragmentActivity implements AdapterView.OnItemSelectedListener, OnMapReadyCallback {
     EditText name;
     EditText surname;
     EditText cardNumber;
     ImageView cardImage;
     TextView buyText;
-    public String number;
+    TextView productNameCh;
+    TextView priceCh;
+    ImageView location;
+    TextView address;
+    String placeName;
+    String addr;
+    GoogleMap googleMap;
+    LatLng latLng;
+    private List<Place.Field> fieldList;
+
+    String apiKey = "AIzaSyCE0OYN2AKSrawHk269AgOhwqmKdyKLeOM";
+    final int PLACE_PICKER_REQUEST = 1;
+
     private final String CHANNEL_ID = "personal_notifications";
     private final int NOTIFICATION_ID = 1;
 
@@ -38,6 +71,42 @@ public class CheckOut extends AppCompatActivity  implements AdapterView.OnItemSe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_out);
 
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapFrag);
+        mapFragment.getMapAsync( this);
+
+
+        productNameCh = findViewById(R.id.productNameCh);
+        priceCh = findViewById(R.id.priceCh);
+
+        location = findViewById(R.id.locaiton);
+        address = findViewById(R.id.address);
+
+        Places.initialize(getApplicationContext(),apiKey);
+        PlacesClient placesClient = Places.createClient(this);
+
+        fieldList = Arrays.asList(Place.Field.ID,Place.Field.NAME,Place.Field.LAT_LNG);
+
+
+
+
+        location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN,fieldList).build(getApplicationContext());
+                startActivityForResult(intent,PLACE_PICKER_REQUEST);
+
+
+
+            }
+        });
+
+        String name = getIntent().getStringExtra("name");
+        String price = getIntent().getStringExtra("price");
+
+        productNameCh.setText(name);
+        priceCh.setText(price);
+
         Spinner spinner = findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.cards,android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -46,11 +115,27 @@ public class CheckOut extends AppCompatActivity  implements AdapterView.OnItemSe
         spinner.setOnItemSelectedListener(this);
 
         buyText = findViewById(R.id.buytext);
-        number = getIntent().getStringExtra("number");
-        if(number.equals("1")){
-            buyText.setText("Buy one item");
-        }else{
-            buyText.setText("Buy "+number+" items");
+        buyText.setText("Buy "+name+" for "+price.substring(1) +" dollars ");
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode){
+            case PLACE_PICKER_REQUEST:
+                Place place = Autocomplete.getPlaceFromIntent(data);
+                placeName = place.getName();
+                addr = place.getAddress();
+                address.setText(addr);
+                latLng = place.getLatLng();
+                googleMap.addMarker(new MarkerOptions().position(latLng).title("Mareker in"+placeName));
+                googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+                CameraUpdate update = CameraUpdateFactory.newLatLngZoom(latLng,15);
+                googleMap.animateCamera(update);
+
+
+                break;
         }
     }
 
@@ -62,12 +147,12 @@ public class CheckOut extends AppCompatActivity  implements AdapterView.OnItemSe
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.cart){
-            Intent intent = new Intent(this, Cart.class);
+        if(item.getItemId() == R.id.home){
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
-        else if (item.getItemId() == R.id.home){
-            Intent intentHome = new Intent(this,MainActivity.class);
+        else if (item.getItemId() == R.id.guide){
+            Intent intentHome = new Intent(this,HelpGuide.class);
             startActivity(intentHome);
         }
         else{
@@ -98,6 +183,9 @@ public class CheckOut extends AppCompatActivity  implements AdapterView.OnItemSe
             name.setText("");
             surname.setText("");
             cardNumber.setText("");
+            productNameCh.setText("");
+            priceCh.setText("");
+            address.setText("");
 
             Toast.makeText(this,"Your order has been proceeded!",Toast.LENGTH_SHORT).show();
 
@@ -154,6 +242,18 @@ public class CheckOut extends AppCompatActivity  implements AdapterView.OnItemSe
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
         cardImage.setImageResource(R.drawable.credit_card);
+
+
+    }
+
+    @Override
+    public void onMapReady(GoogleMap Map) {
+        googleMap=Map;
+
+        LatLng latLng1 = new LatLng(41.99646,21.43141);
+        googleMap.addMarker(new MarkerOptions().position(latLng1).title("Skopje"));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng1));
+
 
 
     }
