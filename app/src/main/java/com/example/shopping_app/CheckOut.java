@@ -74,7 +74,6 @@ public class CheckOut extends FragmentActivity implements AdapterView.OnItemSele
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapFrag);
         mapFragment.getMapAsync( this);
 
-
         productNameCh = findViewById(R.id.productNameCh);
         priceCh = findViewById(R.id.priceCh);
 
@@ -86,17 +85,12 @@ public class CheckOut extends FragmentActivity implements AdapterView.OnItemSele
 
         fieldList = Arrays.asList(Place.Field.ID,Place.Field.NAME,Place.Field.LAT_LNG);
 
-
-
-
         location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN,fieldList).build(getApplicationContext());
                 startActivityForResult(intent,PLACE_PICKER_REQUEST);
-
-
 
             }
         });
@@ -126,14 +120,13 @@ public class CheckOut extends FragmentActivity implements AdapterView.OnItemSele
             case PLACE_PICKER_REQUEST:
                 Place place = Autocomplete.getPlaceFromIntent(data);
                 placeName = place.getName();
-                addr = place.getAddress();
+                addr = place.getName();
                 address.setText(addr);
                 latLng = place.getLatLng();
                 googleMap.addMarker(new MarkerOptions().position(latLng).title("Mareker in"+placeName));
                 googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                 CameraUpdate update = CameraUpdateFactory.newLatLngZoom(latLng,15);
                 googleMap.animateCamera(update);
-
 
                 break;
         }
@@ -172,9 +165,6 @@ public class CheckOut extends FragmentActivity implements AdapterView.OnItemSele
         String surnameS = surname.getText().toString();
         String cardNumberS = cardNumber.getText().toString();
 
-
-
-
         if(nameS.equals("") || surnameS.equals("") || cardNumberS.equals("") ){
 
             Toast.makeText(this,"All fields are required",Toast.LENGTH_SHORT).show();
@@ -199,10 +189,7 @@ public class CheckOut extends FragmentActivity implements AdapterView.OnItemSele
             NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
             notificationManagerCompat.notify(NOTIFICATION_ID,builder.build());
 
-
         }
-
-
     }
     private void createNotificationChannel(){
 
@@ -225,24 +212,23 @@ public class CheckOut extends FragmentActivity implements AdapterView.OnItemSele
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         cardImage = findViewById(R.id.cardImage);
         String text = parent.getItemAtPosition(position).toString();
-        if( text != "MasterCard"){
-            Toast.makeText(this,text,Toast.LENGTH_SHORT).show();
-//            cardImage.setImageResource(R.drawable.visa_logo);
+        if( text == "MasterCard"){
 
-        }else if(text != "Visa"){
-            Toast.makeText(this,text,Toast.LENGTH_SHORT).show();
-//            cardImage.setImageResource(R.drawable.mclogo);
+            cardImage.setImageResource(R.drawable.visa_logo);
 
-        }else{
-            Toast.makeText(this,text,Toast.LENGTH_SHORT).show();
-//            cardImage.setImageResource(R.drawable.aelogo);
+        }else if(text == "Visa"){
+
+            cardImage.setImageResource(R.drawable.mclogo);
+
+        }else if(text == "American Express"){
+
+            cardImage.setImageResource(R.drawable.aelogo);
         }
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
         cardImage.setImageResource(R.drawable.credit_card);
-
 
     }
 
@@ -254,7 +240,10 @@ public class CheckOut extends FragmentActivity implements AdapterView.OnItemSele
         googleMap.addMarker(new MarkerOptions().position(latLng1).title("Skopje"));
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng1));
 
+    }
 
-
+    public void backtoshop(View view) {
+        Intent backIntent = new Intent(CheckOut.this,MainActivity.class);
+        startActivity(backIntent);
     }
 }

@@ -23,8 +23,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity"/>
+        <activity android:name=".CheckOut"
+            android:theme="@style/AppTheme"/>
         <activity android:name=".HelpGuide" />
-        <activity android:name=".CheckOut" />
+
 
 
         <meta-data
