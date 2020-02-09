@@ -85,7 +85,12 @@ public class MainActivity extends AppCompatActivity implements ProductAdapter.Pr
         if(item.getItemId() == R.id.guide) {
             Intent intent = new Intent(this, HelpGuide.class);
             startActivity(intent);
-        }else{
+        }else if (item.getItemId() == R.id.settings) {
+            Intent intent = new Intent(this, Settings.class);
+            startActivity(intent);
+        }
+
+        else{
             return super.onOptionsItemSelected(item);
         }
         return true;

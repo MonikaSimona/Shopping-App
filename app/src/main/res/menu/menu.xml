@@ -20,5 +20,11 @@
         android:title="Usage Guide"
         app:showAsAction="always"
         android:icon="@drawable/help"/>
+    <item
+        android:id="@+id/settings"
+        app:showAsAction="always"
+        android:title="Settings"
+        android:icon="@drawable/settings"
+        />
 
 </menu>
