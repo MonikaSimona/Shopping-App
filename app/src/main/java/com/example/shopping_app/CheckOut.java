@@ -109,7 +109,7 @@ public class CheckOut extends FragmentActivity implements AdapterView.OnItemSele
         spinner.setOnItemSelectedListener(this);
 
         buyText = findViewById(R.id.buytext);
-        buyText.setText("Buy "+name+" for "+price.substring(1) +" dollars ");
+        buyText.setText("Buy "+name.toUpperCase()+" for "+price.substring(1) +" dollars ");
 
     }
 

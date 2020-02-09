@@ -49,10 +49,10 @@ Easy to clean and brushes hold their shape after cleaning.
 Triangular grip handle to give holding precision.</item>
         <item>Made from 100 percent pure cotton, 140lb/300gsm heavyweight watercolor papers, acid-free and chlorine-free, pH-neutral and archival, durable and strong enough for whether wet, dry or mixed media painting, and less likely to curl or warp</item>
         <item>Made from 100 perecent pure cotton, 140lb/300gsm heavyweight watercolor papers, acid-free and chlorine-free, pH-neutral and archival, durable and strong enough for whether wet, dry or mixed media painting, and less likely to curl or warp</item>
-        <item>    Set of 12 assorted shades in 9 ml tube
+        <item>Set of 12 assorted shades in 9 ml tube
     Confirms to safety standard ASTM- AP certification
     Best result can be seen on canvas and Oil Sketching Paper</item>
-        <item>    Set of 12 assorted shades in 9 ml tube
+        <item>Set of 12 assorted shades in 9 ml tube
     Confirms to safety standard ASTM- AP certification
     Best result can be seen on canvas and Oil Sketching Paper</item>
         <item>New 80 Colors 1PCS,Dual Tip Brush Marker Pens, 0.4 Fineliners and Brush Highlighter Pen for Adults children Painting water color pen for children Coloring Book Bullet Journal (Random Color)
@@ -87,4 +87,20 @@ Color:80 colors</item>
         <item>@drawable/markers2</item>
 
     </array>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 </resources>

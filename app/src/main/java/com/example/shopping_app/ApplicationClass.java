@@ -3,6 +3,8 @@ package com.example.shopping_app;
 import android.app.Application;
 import android.content.res.TypedArray;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 
 public class ApplicationClass extends Application {
@@ -17,11 +19,14 @@ public class ApplicationClass extends Application {
 //        String [] prices = getResources().getStringArray(R.array.product_prices);
 //        String [] descriptions = getResources().getStringArray(R.array.product_details);
 //        TypedArray images = getResources().obtainTypedArray(R.array.sports_images);
-//        images.recycle();
+//        products.clear();
 //
 //        for(int i = 0; i<titles.length; i++){
 //            products.add(new Product(titles[i],images.getResourceId(i,0),prices[i],descriptions[i]));
 //        }
+//
+//        images.recycle();
+
 
 
         products = new ArrayList<Product>();
@@ -37,7 +42,11 @@ public class ApplicationClass extends Application {
                 "Triangular grip handle to give holding precision."));
         products.add(new Product("Watercolor Paper 1",R.drawable.paper1,"$5","Made from 100 percent pure cotton, 140lb/300gsm heavyweight watercolor papers, acid-free and chlorine-free, pH-neutral and archival, durable and strong enough for whether wet, dry or mixed media painting, and less likely to curl or warp"));
         products.add(new Product("Watercolor Paper 2",R.drawable.paper2,"$55","Made from 100 percent pure cotton, 140lb/300gsm heavyweight watercolor papers, acid-free and chlorine-free, pH-neutral and archival, durable and strong enough for whether wet, dry or mixed media painting, and less likely to curl or warp"));
-
-
+        products.add(new Product("Oil Paints 1",R.drawable.paint1,"$43","Set of 12 assorted shades in 9 ml tube\n" +
+                "    Confirms to safety standard ASTM- AP certification\n" +
+                "    Best result can be seen on canvas and Oil Sketching Paper"));
+        products.add(new Product("Oil Paints 2",R.drawable.paint2,"$65","Set of 12 assorted shades in 9 ml tube\n" +
+                "    Confirms to safety standard ASTM- AP certification\n" +
+                "    Best result can be seen on canvas and Oil Sketching Paper"));
     }
 }

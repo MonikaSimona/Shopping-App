@@ -2,6 +2,7 @@ package com.example.shopping_app;
 
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -14,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +28,7 @@ public class ProductsFrag extends Fragment {
     RecyclerView.LayoutManager layoutManager;
     View view;
     ProductAdapter.ProductClicked activity;
+
 
 
     public ProductsFrag() {
@@ -64,7 +68,6 @@ public class ProductsFrag extends Fragment {
         myAdapter = new ProductAdapter(this.getActivity(),ApplicationClass.products);
         recyclerView.setAdapter(myAdapter);
 
-
-
     }
+
 }

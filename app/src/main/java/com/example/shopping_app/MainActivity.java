@@ -3,12 +3,11 @@ package com.example.shopping_app;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 
 import android.app.ActionBar;
 import android.content.Intent;
-import android.content.IntentSender;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
@@ -19,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import static com.example.shopping_app.ApplicationClass.products;
 
 public class MainActivity extends AppCompatActivity implements ProductAdapter.ProductClicked{
 
@@ -94,10 +95,12 @@ public class MainActivity extends AppCompatActivity implements ProductAdapter.Pr
     @Override
     public void onProductClicked(int index) {
 
-        productNameDet.setText(ApplicationClass.products.get(index).getProductName());
-        priceDet.setText(ApplicationClass.products.get(index).getPrice());
-        description.setText(ApplicationClass.products.get(index).getDescription());
-        productImageDet.setImageResource(ApplicationClass.products.get(index).getImage());
+        productNameDet.setText(products.get(index).getProductName());
+        priceDet.setText(products.get(index).getPrice());
+        description.setText(products.get(index).getDescription());
+        productImageDet.setImageResource(products.get(index).getImage());
+
+
 
         if(findViewById(R.id.layout_portrait) != null){
             FragmentManager fragmentManager = this.getSupportFragmentManager();
@@ -106,8 +109,9 @@ public class MainActivity extends AppCompatActivity implements ProductAdapter.Pr
                     .hide(fragmentManager.findFragmentById(R.id.productsFrag))
                     .addToBackStack(null)
                     .commit();
-
         }
+
+
 
     }
 }
